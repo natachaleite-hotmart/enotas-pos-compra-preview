@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eNotas - Página Pós-Compra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #F04E23;
+      --color-primary-dark: #C42D09;
+      --color-text: #292929;
+      --color-text-light: #444;
+      --color-text-muted: #999;
+      --color-bg: #fafafa;
+      --color-card: #fff;
+      --color-footer-bg: #292929;
+      --font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --radius-card: 16px;
+      --radius-circle: 50%;
+      --shadow-card: 0 12px 40px rgba(0,0,0,0.08);
+      --spacing-cenarios: 40px;
+      --step-indicator-size: 42px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-family);
+      background: var(--color-bg);
+      color: var(--color-text);
+    }
+
+    /* Header */
+    .header {
+      background: #fff;
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #eee;
+    }
+    .header img { height: 28px; }
+    .header nav a {
+      margin-left: 28px;
+      text-decoration: none;
+      color: #292929;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .header nav a:hover { color: #F04E23; }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 80px 24px 72px;
+      background: linear-gradient(135deg, #F04E23 0%, #E8390B 50%, #C42D09 100%);
+      color: #fff;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      padding: 8px 24px;
+      border-radius: 24px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: 0.3px;
+    }
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .hero .hero-subtitle {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto;
+      opacity: 0.92;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    /* Card Próximos Passos */
+    .card-proximos-passos {
+      max-width: 720px;
+      margin: -44px auto 0;
+      padding: 48px 44px;
+      background: var(--color-card);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      position: relative;
+      z-index: 1;
+    }
+    .card-proximos-passos h2 {
+      text-align: center;
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 40px;
+      color: var(--color-text);
+    }
+
+    /* Cenários */
+    .cenario {
+      border: 1px solid #eee;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .cenario-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      cursor: pointer;
+      background: var(--color-bg);
+      transition: background 0.2s;
+    }
+    .cenario-header:hover {
+      background: #f0f0f0;
+    }
+    .cenario-header h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-text);
+      margin: 0;
+    }
+    .cenario-toggle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+    .cenario.open .cenario-toggle {
+      transform: rotate(180deg);
+    }
+    .cenario-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 24px;
+    }
+    .cenario.open .cenario-content {
+      max-height: 600px;
+      padding: 8px 24px 24px;
+    }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 28px;
+    }
+    .step:last-child {
+      margin-bottom: 0;
+    }
+    .step-number {
+      flex-shrink: 0;
+      width: var(--step-indicator-size);
+      height: var(--step-indicator-size);
+      border-radius: var(--radius-circle);
+      background: var(--color-primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+      margin-right: 20px;
+    }
+    .step p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--color-text-light);
+      padding-top: 8px;
+    }
+    .step a {
+      color: var(--color-primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .step a:hover {
+      text-decoration: underline;
+    }
+
+    /* Separador entre cenários */
+    .cenario-divider {
+      border: none;
+      border-top: 1px solid #eee;
+      margin: var(--spacing-cenarios) 0;
+    }
+
+    /* Responsive - Mobile */
+    @media (max-width: 599px) {
+      .hero {
+        padding: 60px 20px 56px;
+      }
+      .hero h1 {
+        font-size: 28px;
+      }
+      .hero .hero-subtitle {
+        font-size: 16px;
+      }
+      .card-proximos-passos {
+        margin: -32px 16px 0;
+        padding: 32px 24px;
+      }
+      .card-proximos-passos h2 {
+        font-size: 22px;
+        margin-bottom: 28px;
+      }
+      .cenario-header h3 {
+        font-size: 18px;
+      }
+      .step-number {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+      }
+      .step p {
+        font-size: 15px;
+      }
+      .header {
+        padding: 12px 20px;
+      }
+    }
+
+    /* Responsive - Tablet */
+    @media (min-width: 600px) and (max-width: 1023px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+      .card-proximos-passos {
+        margin: -40px auto 0;
+        padding: 40px 36px;
+        max-width: 680px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <img src="https://enotas.com.br/wp-content/themes/enotas-4.3/ativos/img/logos/enotas.png?v=2" alt="eNotas">
+    <nav>
+      <a href="#">Clientes</a>
+      <a href="#">Blog</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="badge">🎉 Parabéns!</div>
+    <h1>Você acabou de assinar um plano do eNotas</h1>
+    <p class="hero-subtitle">Veja abaixo os próximos passos de acordo com o seu cenário de compra.</p>
+  </section>
+
+  <section class="card-proximos-passos">
+    <h2>Próximos passos</h2>
+
+    <!-- Cenário Hotmart -->
+    <div class="cenario cenario-hotmart open">
+      <div class="cenario-header" onclick="this.parentElement.classList.toggle('open')">
+        <h3>🟠 Sou cliente Hotmart (vendo pela plataforma)</h3>
+        <span class="cenario-toggle">▾</span>
+      </div>
+      <div class="cenario-content">
+        <div class="step">
+          <div class="step-number">1</div>
+          <p>Acesse o eNotas dentro da plataforma Hotmart em <a href="https://app.hotmart.com/tools/enotas" target="_blank">app.hotmart.com/tools/enotas</a>.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <p>Complete o onboarding guiado — inclui configuração de dados fiscais com OCR (leitura automática de documentos) para agilizar o cadastro.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <p>Pronto! Após o onboarding, suas notas fiscais serão emitidas automaticamente a cada venda.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Separador visual -->
+    <hr class="cenario-divider">
+
+    <!-- Cenário Não-Hotmart -->
+    <div class="cenario cenario-nao-hotmart">
+      <div class="cenario-header" onclick="this.parentElement.classList.toggle('open')">
+        <h3>📧 Não sou cliente Hotmart</h3>
+        <span class="cenario-toggle">▾</span>
+      </div>
+      <div class="cenario-content">
+        <div class="step">
+          <div class="step-number">1</div>
+          <p>Verifique a caixa de entrada do email que você usou na compra. Enviamos instruções de acesso e link para criação da sua conta.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <p>Não encontrou? Confira a pasta de spam ou promoções.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <p>O email contém o link para criação da sua conta diretamente no eNotas.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <p>Precisa de ajuda? Abra um ticket em <a href="https://atendimento.enotas.com.br/hc/pt-br" target="_blank">atendimento.enotas.com.br/hc/pt-br</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="text-align:center;padding:64px 24px 80px;">
+    <p style="font-size:20px;color:#555;max-width:560px;margin:0 auto;line-height:1.7;">
+      <span style="color:#F04E23;font-weight:800;">Cuidamos das suas notas fiscais,</span> para você cuidar do seu negócio.
+    </p>
+  </section>
+
+  <footer style="background:#292929;color:#999;text-align:center;padding:36px 24px;font-size:14px;line-height:1.8;">
+    Utilizamos nossa tecnologia para dar mais liberdade às empresas que querem crescer rapidamente focando no que fazem de melhor no mundo, enquanto cuidamos de suas notas fiscais.
+  </footer>
+
+</body>
+</html>
