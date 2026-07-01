@@ -86,7 +86,7 @@
 
     /* Card Próximos Passos */
     .card-proximos-passos {
-      max-width: 720px;
+      max-width: 880px;
       margin: -44px auto 0;
       padding: 48px 44px;
       background: var(--color-card);
@@ -103,69 +103,38 @@
       color: var(--color-text);
     }
 
-    /* Cenários */
+    /* Cenários - Layout lado a lado */
+    .cenarios-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
     .cenario {
       border: 1px solid #eee;
       border-radius: 12px;
-      overflow: hidden;
-    }
-    .cenario-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 24px;
-      cursor: pointer;
+      padding: 28px 24px;
       background: var(--color-bg);
-      transition: background 0.2s;
     }
-    .cenario-header:hover {
-      background: #f0f0f0;
-    }
-    .cenario-header h3 {
-      font-size: 20px;
+    .cenario h3 {
+      font-size: 18px;
       font-weight: 700;
       color: var(--color-text);
-      margin: 0;
-    }
-    .cenario-toggle {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--color-primary);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      font-weight: 700;
-      transition: transform 0.3s;
-      flex-shrink: 0;
-    }
-    .cenario.open .cenario-toggle {
-      transform: rotate(180deg);
-    }
-    .cenario-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.3s ease;
-      padding: 0 24px;
-    }
-    .cenario.open .cenario-content {
-      max-height: 600px;
-      padding: 8px 24px 24px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--color-primary);
     }
     .step {
       display: flex;
       align-items: flex-start;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
     .step:last-child {
       margin-bottom: 0;
     }
     .step-number {
       flex-shrink: 0;
-      width: var(--step-indicator-size);
-      height: var(--step-indicator-size);
+      width: 32px;
+      height: 32px;
       border-radius: var(--radius-circle);
       background: var(--color-primary);
       color: #fff;
@@ -173,14 +142,14 @@
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-size: 16px;
-      margin-right: 20px;
+      font-size: 14px;
+      margin-right: 14px;
     }
     .step p {
-      font-size: 16px;
-      line-height: 1.7;
+      font-size: 15px;
+      line-height: 1.6;
       color: var(--color-text-light);
-      padding-top: 8px;
+      padding-top: 4px;
     }
     .step a {
       color: var(--color-primary);
@@ -189,13 +158,6 @@
     }
     .step a:hover {
       text-decoration: underline;
-    }
-
-    /* Separador entre cenários */
-    .cenario-divider {
-      border: none;
-      border-top: 1px solid #eee;
-      margin: var(--spacing-cenarios) 0;
     }
 
     /* Responsive - Mobile */
@@ -211,22 +173,25 @@
       }
       .card-proximos-passos {
         margin: -32px 16px 0;
-        padding: 32px 24px;
+        padding: 32px 20px;
       }
       .card-proximos-passos h2 {
         font-size: 22px;
         margin-bottom: 28px;
       }
-      .cenario-header h3 {
-        font-size: 18px;
+      .cenarios-grid {
+        grid-template-columns: 1fr;
+      }
+      .cenario h3 {
+        font-size: 16px;
       }
       .step-number {
-        width: 36px;
-        height: 36px;
-        font-size: 14px;
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
       }
       .step p {
-        font-size: 15px;
+        font-size: 14px;
       }
       .header {
         padding: 12px 20px;
@@ -239,9 +204,8 @@
         font-size: 36px;
       }
       .card-proximos-passos {
-        margin: -40px auto 0;
-        padding: 40px 36px;
-        max-width: 680px;
+        margin: -40px 24px 0;
+        padding: 40px 32px;
       }
     }
   </style>
@@ -264,13 +228,11 @@
   <section class="card-proximos-passos">
     <h2>Próximos passos</h2>
 
-    <!-- Cenário Hotmart -->
-    <div class="cenario cenario-hotmart open">
-      <div class="cenario-header" onclick="this.parentElement.classList.toggle('open')">
-        <h3>🟠 Sou cliente Hotmart (vendo pela plataforma)</h3>
-        <span class="cenario-toggle">▾</span>
-      </div>
-      <div class="cenario-content">
+    <!-- Cenários lado a lado -->
+    <div class="cenarios-grid">
+      <!-- Cenário Hotmart -->
+      <div class="cenario cenario-hotmart">
+        <h3>🟠 Sou cliente Hotmart</h3>
         <div class="step">
           <div class="step-number">1</div>
           <p>Acesse o eNotas dentro da plataforma Hotmart em <a href="https://app.hotmart.com/tools/enotas" target="_blank">app.hotmart.com/tools/enotas</a>.</p>
@@ -281,24 +243,16 @@
         </div>
         <div class="step">
           <div class="step-number">3</div>
-          <p>Pronto! Após o onboarding, suas notas fiscais serão emitidas automaticamente a cada venda.</p>
+          <p>Pronto! Suas notas fiscais serão emitidas automaticamente a cada venda.</p>
         </div>
       </div>
-    </div>
 
-    <!-- Separador visual -->
-    <hr class="cenario-divider">
-
-    <!-- Cenário Não-Hotmart -->
-    <div class="cenario cenario-nao-hotmart">
-      <div class="cenario-header" onclick="this.parentElement.classList.toggle('open')">
+      <!-- Cenário Não-Hotmart -->
+      <div class="cenario cenario-nao-hotmart">
         <h3>📧 Não sou cliente Hotmart</h3>
-        <span class="cenario-toggle">▾</span>
-      </div>
-      <div class="cenario-content">
         <div class="step">
           <div class="step-number">1</div>
-          <p>Verifique a caixa de entrada do email que você usou na compra. Enviamos instruções de acesso e link para criação da sua conta.</p>
+          <p>Verifique a caixa de entrada do email que você usou na compra. Enviamos instruções de acesso.</p>
         </div>
         <div class="step">
           <div class="step-number">2</div>
@@ -310,7 +264,7 @@
         </div>
         <div class="step">
           <div class="step-number">4</div>
-          <p>Precisa de ajuda? Abra um ticket em <a href="https://atendimento.enotas.com.br/hc/pt-br" target="_blank">atendimento.enotas.com.br/hc/pt-br</a>.</p>
+          <p>Precisa de ajuda? <a href="https://atendimento.enotas.com.br/hc/pt-br" target="_blank">Abra um ticket</a>.</p>
         </div>
       </div>
     </div>
