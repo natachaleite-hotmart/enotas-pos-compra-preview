@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>eNotas - Página Pós-Compra</title>
+  <title>eNotas - Pagina Pos-Compra</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -21,18 +21,14 @@
       --radius-card: 16px;
       --radius-circle: 50%;
       --shadow-card: 0 12px 40px rgba(0,0,0,0.08);
-      --spacing-cenarios: 40px;
       --step-indicator-size: 42px;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: var(--font-family);
       background: var(--color-bg);
       color: var(--color-text);
     }
-
     .header {
       background: #fff;
       padding: 14px 40px;
@@ -50,7 +46,6 @@
       font-weight: 600;
     }
     .header nav a:hover { color: #F04E23; }
-
     .hero {
       text-align: center;
       padding: 80px 24px 72px;
@@ -81,7 +76,6 @@
       line-height: 1.7;
       font-weight: 400;
     }
-
     .card-proximos-passos {
       max-width: 880px;
       margin: -44px auto 0;
@@ -99,7 +93,6 @@
       margin-bottom: 40px;
       color: var(--color-text);
     }
-
     .cenarios-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -152,10 +145,7 @@
       font-weight: 600;
       text-decoration: none;
     }
-    .step a:hover {
-      text-decoration: underline;
-    }
-
+    .step a:hover { text-decoration: underline; }
     @media (max-width: 599px) {
       .hero { padding: 60px 20px 56px; }
       .hero h1 { font-size: 28px; }
@@ -168,7 +158,6 @@
       .step p { font-size: 14px; }
       .header { padding: 12px 20px; }
     }
-
     @media (min-width: 600px) and (max-width: 1023px) {
       .hero h1 { font-size: 36px; }
       .card-proximos-passos { margin: -40px 24px 0; padding: 40px 32px; }
@@ -185,14 +174,13 @@
   </header>
 
   <section class="hero">
-    <div class="badge">🎉 Parabéns!</div>
-    <h1>Você acabou de assinar um plano do eNotas</h1>
-    <p class="hero-subtitle">Veja abaixo os próximos passos de acordo com o seu cenário de compra.</p>
+    <div class="badge">&#127881; Parabens!</div>
+    <h1>Voce acabou de assinar um plano do eNotas</h1>
+    <p class="hero-subtitle">Veja abaixo os proximos passos de acordo com o seu cenario de compra.</p>
   </section>
 
   <section class="card-proximos-passos">
-    <h2>Próximos passos</h2>
-
+    <h2>Proximos passos</h2>
     <div class="cenarios-grid">
       <div class="cenario cenario-hotmart">
         <h3>Sou cliente Hotmart</h3>
@@ -202,31 +190,30 @@
         </div>
         <div class="step">
           <div class="step-number">2</div>
-          <p>Complete o onboarding guiado — inclui configuração de dados fiscais com OCR (leitura automática de documentos) para agilizar o cadastro.</p>
+          <p>Complete o onboarding guiado - inclui configuracao de dados fiscais com OCR (leitura automatica de documentos) para agilizar o cadastro.</p>
         </div>
         <div class="step">
           <div class="step-number">3</div>
-          <p>Pronto! Suas notas fiscais serão emitidas automaticamente a cada venda.</p>
+          <p>Pronto! Suas notas fiscais serao emitidas automaticamente a cada venda.</p>
         </div>
       </div>
-
       <div class="cenario cenario-nao-hotmart">
-        <h3>Não sou cliente Hotmart</h3>
+        <h3>Nao sou cliente Hotmart</h3>
         <div class="step">
           <div class="step-number">1</div>
-          <p>Verifique a caixa de entrada do email que você usou na compra. Enviamos instruções de acesso.</p>
+          <p>Verifique a caixa de entrada do email que voce usou na compra. Enviamos instrucoes de acesso.</p>
         </div>
         <div class="step">
           <div class="step-number">2</div>
-          <p>Não encontrou? Confira a pasta de spam ou promoções.</p>
+          <p>Nao encontrou? Confira a pasta de spam ou promocoes.</p>
         </div>
         <div class="step">
           <div class="step-number">3</div>
-          <p>O email contém o link para criação da sua conta diretamente no eNotas.</p>
+          <p>O email contem o link para criacao da sua conta diretamente no eNotas.</p>
         </div>
         <div class="step">
           <div class="step-number">4</div>
-          <p>Precisa de ajuda? O time de onboarding fará contato via email com o assunto <strong>“Ativação de novos assinantes”</strong> em até 24 horas úteis.</p>
+          <p>Precisa de ajuda? O time de onboarding fara contato via email com o assunto <strong>"Ativacao de novos assinantes"</strong> em ate 24 horas uteis.</p>
         </div>
       </div>
     </div>
@@ -234,13 +221,12 @@
 
   <section style="text-align:center;padding:64px 24px 80px;">
     <p style="font-size:20px;color:#555;max-width:560px;margin:0 auto;line-height:1.7;">
-      <span style="color:#F04E23;font-weight:800;">Cuidamos das suas notas fiscais,</span> para você cuidar do seu negócio.
+      <span style="color:#F04E23;font-weight:800;">Cuidamos das suas notas fiscais,</span> para voce cuidar do seu negocio.
     </p>
   </section>
 
   <footer style="background:#292929;color:#999;text-align:center;padding:36px 24px;font-size:14px;line-height:1.8;">
-    Utilizamos nossa tecnologia para dar mais liberdade às empresas que querem crescer rapidamente focando no que fazem de melhor no mundo, enquanto cuidamos de suas notas fiscais.
+    Utilizamos nossa tecnologia para dar mais liberdade as empresas que querem crescer rapidamente focando no que fazem de melhor no mundo, enquanto cuidamos de suas notas fiscais.
   </footer>
-
 </body>
 </html>
