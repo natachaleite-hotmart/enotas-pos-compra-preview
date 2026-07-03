@@ -33,7 +33,6 @@
       color: var(--color-text);
     }
 
-    /* Header */
     .header {
       background: #fff;
       padding: 14px 40px;
@@ -52,7 +51,6 @@
     }
     .header nav a:hover { color: #F04E23; }
 
-    /* Hero */
     .hero {
       text-align: center;
       padding: 80px 24px 72px;
@@ -84,7 +82,6 @@
       font-weight: 400;
     }
 
-    /* Card Próximos Passos */
     .card-proximos-passos {
       max-width: 880px;
       margin: -44px auto 0;
@@ -103,7 +100,6 @@
       color: var(--color-text);
     }
 
-    /* Cenários - Layout lado a lado */
     .cenarios-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -160,53 +156,22 @@
       text-decoration: underline;
     }
 
-    /* Responsive - Mobile */
     @media (max-width: 599px) {
-      .hero {
-        padding: 60px 20px 56px;
-      }
-      .hero h1 {
-        font-size: 28px;
-      }
-      .hero .hero-subtitle {
-        font-size: 16px;
-      }
-      .card-proximos-passos {
-        margin: -32px 16px 0;
-        padding: 32px 20px;
-      }
-      .card-proximos-passos h2 {
-        font-size: 22px;
-        margin-bottom: 28px;
-      }
-      .cenarios-grid {
-        grid-template-columns: 1fr;
-      }
-      .cenario h3 {
-        font-size: 16px;
-      }
-      .step-number {
-        width: 28px;
-        height: 28px;
-        font-size: 12px;
-      }
-      .step p {
-        font-size: 14px;
-      }
-      .header {
-        padding: 12px 20px;
-      }
+      .hero { padding: 60px 20px 56px; }
+      .hero h1 { font-size: 28px; }
+      .hero .hero-subtitle { font-size: 16px; }
+      .card-proximos-passos { margin: -32px 16px 0; padding: 32px 20px; }
+      .card-proximos-passos h2 { font-size: 22px; margin-bottom: 28px; }
+      .cenarios-grid { grid-template-columns: 1fr; }
+      .cenario h3 { font-size: 16px; }
+      .step-number { width: 28px; height: 28px; font-size: 12px; }
+      .step p { font-size: 14px; }
+      .header { padding: 12px 20px; }
     }
 
-    /* Responsive - Tablet */
     @media (min-width: 600px) and (max-width: 1023px) {
-      .hero h1 {
-        font-size: 36px;
-      }
-      .card-proximos-passos {
-        margin: -40px 24px 0;
-        padding: 40px 32px;
-      }
+      .hero h1 { font-size: 36px; }
+      .card-proximos-passos { margin: -40px 24px 0; padding: 40px 32px; }
     }
   </style>
 </head>
@@ -228,11 +193,9 @@
   <section class="card-proximos-passos">
     <h2>Próximos passos</h2>
 
-    <!-- Cenários lado a lado -->
     <div class="cenarios-grid">
-      <!-- Cenário Hotmart -->
       <div class="cenario cenario-hotmart">
-        <h3>🟠 Sou cliente Hotmart</h3>
+        <h3>Sou cliente Hotmart</h3>
         <div class="step">
           <div class="step-number">1</div>
           <p>Acesse o eNotas dentro da plataforma Hotmart em <a href="https://app.hotmart.com/tools/enotas" target="_blank">app.hotmart.com/tools/enotas</a>.</p>
@@ -247,9 +210,8 @@
         </div>
       </div>
 
-      <!-- Cenário Não-Hotmart -->
       <div class="cenario cenario-nao-hotmart">
-        <h3>📧 Não sou cliente Hotmart</h3>
+        <h3>Não sou cliente Hotmart</h3>
         <div class="step">
           <div class="step-number">1</div>
           <p>Verifique a caixa de entrada do email que você usou na compra. Enviamos instruções de acesso.</p>
@@ -264,7 +226,7 @@
         </div>
         <div class="step">
           <div class="step-number">4</div>
-          <p>Precisa de ajuda? <a href="https://atendimento.enotas.com.br/hc/pt-br" target="_blank">Abra um ticket</a>.</p>
+          <p>Precisa de ajuda? O time de onboarding fará contato via email com o assunto <strong>“Ativação de novos assinantes”</strong> em até 24 horas úteis.</p>
         </div>
       </div>
     </div>
