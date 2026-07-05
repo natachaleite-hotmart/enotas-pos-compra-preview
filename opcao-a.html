@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eNotas - Pos-Compra (Opcao A - Fluxo de Decisao)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #F04E23;
+      --color-primary-dark: #C42D09;
+      --color-text: #292929;
+      --color-text-light: #444;
+      --color-bg: #fafafa;
+      --color-card: #fff;
+      --font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --radius-card: 16px;
+      --shadow-card: 0 12px 40px rgba(0,0,0,0.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family); background: var(--color-bg); color: var(--color-text); }
+    .header { background: #fff; padding: 14px 40px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #eee; }
+    .header img { height: 28px; }
+    .header nav a { margin-left: 28px; text-decoration: none; color: #292929; font-size: 14px; font-weight: 600; }
+    .header nav a:hover { color: #F04E23; }
+    .hero { text-align: center; padding: 80px 24px 72px; background: linear-gradient(135deg, #F04E23 0%, #E8390B 50%, #C42D09 100%); color: #fff; }
+    .hero .badge { display: inline-block; background: rgba(255,255,255,0.18); padding: 8px 24px; border-radius: 24px; font-size: 14px; font-weight: 700; margin-bottom: 20px; }
+    .hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+    .hero .hero-subtitle { font-size: 18px; max-width: 600px; margin: 0 auto; opacity: 0.92; line-height: 1.7; }
+    .card { max-width: 680px; margin: -44px auto 0; padding: 48px 44px; background: var(--color-card); border-radius: var(--radius-card); box-shadow: var(--shadow-card); position: relative; z-index: 1; }
+    .card h2 { text-align: center; font-size: 24px; font-weight: 800; margin-bottom: 32px; }
+    .question { text-align: center; margin-bottom: 24px; }
+    .question p { font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--color-text); }
+    .options { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .option-btn { padding: 14px 28px; border: 2px solid #eee; border-radius: 12px; background: var(--color-bg); font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: var(--font-family); }
+    .option-btn:hover { border-color: var(--color-primary); background: #FFF5F2; }
+    .result-panel { display: none; animation: fadeIn 0.3s ease; }
+    .result-panel.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .result-panel h3 { font-size: 18px; font-weight: 700; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--color-primary); }
+    .step { display: flex; align-items: flex-start; margin-bottom: 18px; }
+    .step:last-child { margin-bottom: 0; }
+    .step-number { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--color-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; margin-right: 14px; }
+    .step p { font-size: 15px; line-height: 1.6; color: var(--color-text-light); padding-top: 4px; }
+    .step a { color: var(--color-primary); font-weight: 600; text-decoration: none; }
+    .step a:hover { text-decoration: underline; }
+    .back-btn { display: inline-block; margin-top: 24px; padding: 10px 20px; background: none; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; color: #666; font-family: var(--font-family); }
+    .back-btn:hover { border-color: #999; color: #333; }
+    @media (max-width: 599px) {
+      .hero { padding: 60px 20px 56px; }
+      .hero h1 { font-size: 28px; }
+      .card { margin: -32px 16px 0; padding: 32px 20px; }
+      .options { flex-direction: column; }
+      .option-btn { width: 100%; }
+      .header { padding: 12px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <img src="https://enotas.com.br/wp-content/themes/enotas-4.3/ativos/img/logos/enotas.png?v=2" alt="eNotas">
+    <nav><a href="#">Clientes</a><a href="#">Blog</a></nav>
+  </header>
+  <section class="hero">
+    <div class="badge">&#127881; Parabens!</div>
+    <h1>Voce acabou de assinar um plano do eNotas</h1>
+    <p class="hero-subtitle">Responda abaixo para ver os proximos passos do seu cenario.</p>
+  </section>
+  <section class="card">
+    <h2>Proximos passos</h2>
+    <div id="q1" class="question">
+      <p>Voce vende pela Hotmart?</p>
+      <div class="options">
+        <button class="option-btn" onclick="answer1('sim')">Sim, sou cliente Hotmart</button>
+        <button class="option-btn" onclick="answer1('nao')">Nao</button>
+      </div>
+    </div>
+    <div id="q2" class="question" style="display:none;">
+      <p>Sua cidade emite pelo Portal Nacional?</p>
+      <div class="options">
+        <button class="option-btn" onclick="answer2('sim')">Sim</button>
+        <button class="option-btn" onclick="answer2('nao')">Nao / Nao sei</button>
+      </div>
+      <button class="back-btn" onclick="goBack(1)">&#8592; Voltar</button>
+    </div>
+    <div id="result-hotmart-portal" class="result-panel">
+      <h3>Sou cliente Hotmart (cidade habilitada)</h3>
+      <div class="step"><div class="step-number">1</div><p>Acesse o eNotas dentro da plataforma Hotmart em <a href="https://app.hotmart.com/tools/enotas" target="_blank">app.hotmart.com/tools/enotas</a>.</p></div>
+      <div class="step"><div class="step-number">2</div><p>Complete o onboarding guiado - inclui configuracao de dados fiscais com OCR (leitura automatica de documentos) para agilizar o cadastro.</p></div>
+      <div class="step"><div class="step-number">3</div><p>Pronto! Suas notas fiscais serao emitidas automaticamente a cada venda.</p></div>
+      <button class="back-btn" onclick="goBack(2)">&#8592; Voltar</button>
+    </div>
+    <div id="result-email" class="result-panel">
+      <h3>Proximos passos por email</h3>
+      <div class="step"><div class="step-number">1</div><p>Verifique a caixa de entrada do email que voce usou na compra. Enviamos instrucoes de acesso.</p></div>
+      <div class="step"><div class="step-number">2</div><p>Nao encontrou? Confira a pasta de spam ou promocoes.</p></div>
+      <div class="step"><div class="step-number">3</div><p>O email contem o link para criacao da sua conta diretamente no eNotas.</p></div>
+      <div class="step"><div class="step-number">4</div><p>Precisa de ajuda? O time de onboarding fara contato via email com o assunto <strong>"Ativacao de novos assinantes"</strong> em ate 24 horas uteis.</p></div>
+      <button class="back-btn" onclick="goBack('email')">&#8592; Voltar</button>
+    </div>
+  </section>
+  <section style="text-align:center;padding:64px 24px 80px;"><p style="font-size:20px;color:#555;max-width:560px;margin:0 auto;line-height:1.7;"><span style="color:#F04E23;font-weight:800;">Cuidamos das suas notas fiscais,</span> para voce cuidar do seu negocio.</p></section>
+  <footer style="background:#292929;color:#999;text-align:center;padding:36px 24px;font-size:14px;line-height:1.8;">Utilizamos nossa tecnologia para dar mais liberdade as empresas que querem crescer rapidamente focando no que fazem de melhor no mundo, enquanto cuidamos de suas notas fiscais.</footer>
+  <script>
+    var lastQ1 = null;
+    function hideAll() { document.getElementById('q1').style.display='none'; document.getElementById('q2').style.display='none'; document.getElementById('result-hotmart-portal').classList.remove('active'); document.getElementById('result-email').classList.remove('active'); }
+    function answer1(val) { lastQ1=val; hideAll(); if(val==='sim'){document.getElementById('q2').style.display='block';}else{document.getElementById('result-email').classList.add('active');} }
+    function answer2(val) { hideAll(); if(val==='sim'){document.getElementById('result-hotmart-portal').classList.add('active');}else{document.getElementById('result-email').classList.add('active');} }
+    function goBack(from) { hideAll(); if(from===1){document.getElementById('q1').style.display='block';}else if(from===2){document.getElementById('q2').style.display='block';}else if(from==='email'){if(lastQ1==='sim'){document.getElementById('q2').style.display='block';}else{document.getElementById('q1').style.display='block';}} }
+  </script>
+</body>
+</html>
